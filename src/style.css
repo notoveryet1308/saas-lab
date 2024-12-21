@@ -1,0 +1,160 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Noto Sans", serif;
+  font-weight: 400;
+}
+
+.page-container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.page-header {
+  padding: 16px 24px;
+  display: grid;
+  justify-content: flex-start;
+  align-items: center;
+  grid-template-columns: 200px 1fr;
+  background-color: #e2f6e9;
+}
+
+.page-header-logo {
+  height: 20px;
+}
+
+.main-content-container {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.main-content-title {
+  padding: 16px 24px;
+  font-size: 20px;
+}
+
+.table-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 0 24px;
+  min-height: 232px;
+}
+
+.table-loader,
+.table-error {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #ececec;
+  border-radius: 4px;
+}
+
+.table-error {
+  display: none;
+}
+
+.table-header,
+.table-row {
+  display: grid;
+  grid-template-columns: 100px repeat(2, 1fr);
+  grid-template-rows: auto;
+  border: 1px solid #ececec;
+  border-right: none;
+}
+
+.table-header {
+  border-radius: 4px 4px 0 0;
+}
+
+.table-column-cell,
+.table-row-cell-data {
+  padding: 8px;
+  border-right: 1px solid #ececec;
+}
+
+.table-column-cell {
+  font-weight: 500;
+}
+.table-column-cell:last-child {
+  border-radius: 0px 4px 0 0;
+}
+
+.table-row:not(:last-child) {
+  border-bottom: none;
+}
+
+.table-row:first-child {
+  border-top: none;
+}
+
+.table-row:last-child {
+  border-radius: 0 0 4px 4px;
+}
+
+.table-row:last-child .table-row-cell-data:last-child {
+  border-radius: 0 0 4px 0;
+}
+
+.table-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.pagination-button {
+  border: none;
+  background-color: #6ce797;
+  color: black;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.pagination-button[disabled="true"] {
+  background-color: rgb(225, 238, 219);
+  cursor: not-allowed;
+  color: #c1bfbf;
+}
+
+.loader {
+  width: 40px;
+  height: 40px;
+  border: 5px solid #f3f3f3;
+  border-top: 5px solid #3498db;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 20px auto;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
