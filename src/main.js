@@ -8,30 +8,34 @@ const paginateNextBtn = document.querySelector(".pagination-button.next");
 const tableLoader = document.querySelector(".table-loader");
 const tableError = document.querySelector(".table-error");
 
-const assignmentData = await getAssignmentData();
+const init = async () => {
+  const assignmentData = await getAssignmentData();
 
-let currentPage = 1;
+  let currentPage = 1;
 
-const table = new Table({
-  currentPage,
-  data: assignmentData,
-  nextButtonNode: paginateNextBtn,
-  prevButtonNode: paginatePrevBtn,
-  tableColumnList: TABLE_COLUMN_LIST,
-  tableLoader,
-  tableError,
-});
+  const table = new Table({
+    currentPage,
+    data: assignmentData,
+    nextButtonNode: paginateNextBtn,
+    prevButtonNode: paginatePrevBtn,
+    tableColumnList: TABLE_COLUMN_LIST,
+    tableLoader,
+    tableError,
+  });
 
-table.init();
+  table.init();
 
-paginateBtnContainer.addEventListener("click", ({ target }) => {
-  if (target.classList.contains("next")) {
-    currentPage += 1;
-    table.setPage(currentPage);
-  } else if (target.classList.contains("prev")) {
-    if (currentPage > 1) {
-      currentPage -= 1;
+  paginateBtnContainer.addEventListener("click", ({ target }) => {
+    if (target.classList.contains("next")) {
+      currentPage += 1;
       table.setPage(currentPage);
+    } else if (target.classList.contains("prev")) {
+      if (currentPage > 1) {
+        currentPage -= 1;
+        table.setPage(currentPage);
+      }
     }
-  }
-});
+  });
+};
+
+init();
